@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/category.dart';
+import '../data/dummy_data.dart';
 
 class CategoriesMealsScreen extends StatelessWidget {
   // const CategoriesMealsScreen({super.key});
@@ -15,6 +16,9 @@ class CategoriesMealsScreen extends StatelessWidget {
 
     // Tenta converter os args para Category; se não for possível, usa null (ou você pode fornecer fallback).
     final Category? category = args is Category ? args : null;
+    final categoryMeals = dummyMeals.where((meal) {
+      return meal.categories.contains(category?.id);
+    }).toList();
 
     return Scaffold(
       appBar: AppBar(
